@@ -1,39 +1,53 @@
 :root {
-  /* Color Palette - Deep Slate / Premium Dark Mode */
-  --clr-bg-base: #0B1120;
-  --clr-bg-surface: #1E293B;
-  --clr-bg-surface-glass: rgba(30, 41, 59, 0.6);
-  --clr-text-primary: #F8FAFC;
-  --clr-text-secondary: #94A3B8;
-  
-  /* Vibrant Accents */
-  --clr-accent-blue: #38BDF8;
-  --clr-accent-purple: #818CF8;
-  --gradient-accent: linear-gradient(135deg, var(--clr-accent-blue), var(--clr-accent-purple));
-  
+  /* Color Palette — Deep Navy / Premium Dark */
+  --clr-bg-base:        #0B1120;
+  --clr-bg-section:     #0f1729;
+  --clr-bg-surface:     #1a2540;
+  --clr-bg-glass:       rgba(20, 32, 58, 0.65);
+  --clr-border:         rgba(255, 255, 255, 0.06);
+  --clr-border-hover:   rgba(255, 255, 255, 0.14);
+
+  --clr-text-primary:   #EFF4FF;
+  --clr-text-secondary: #7888AA;
+  --clr-text-muted:     #4a5880;
+
+  /* Accents */
+  --clr-accent-blue:    #4F9EFF;
+  --clr-accent-purple:  #9B8AFF;
+  --clr-accent-teal:    #3ECFCF;
+
+  --gradient-accent:    linear-gradient(135deg, var(--clr-accent-blue), var(--clr-accent-purple));
+  --gradient-glow:      linear-gradient(135deg, rgba(79,158,255,0.2), rgba(155,138,255,0.2));
+
   /* Typography */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  
-  /* Dimensions & Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 3rem;
-  --space-xl: 5rem;
-  --max-w-container: 1200px;
-  
-  /* Shapes & Effects */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  3rem;
+  --space-xl:  5rem;
+  --space-2xl: 8rem;
+
+  --max-w: 1160px;
+
+  /* Shapes */
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-xl:   32px;
   --radius-full: 9999px;
-  
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.4);
-  
-  --backdrop-blur: blur(12px);
-  
-  /* Animations */
-  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Effects */
+  --shadow-card:    0 8px 40px rgba(0, 0, 0, 0.45);
+  --shadow-glow-sm: 0 0 20px rgba(79, 158, 255, 0.3);
+  --shadow-glow-lg: 0 0 60px rgba(79, 158, 255, 0.2);
+  --blur:           blur(16px);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-smooth: all 0.5s var(--ease-out);
+  --t-fast:   all 0.25s var(--ease-out);
 }

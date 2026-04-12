@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lester Narvasta | Mobile Engineer</title>
+    <meta name="description" content="Mobile Software Engineer specializing in high-performance Android & iOS applications.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/css/sys.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/hero.css">
+    <link rel="stylesheet" href="./src/css/about.css">
+    <link rel="stylesheet" href="./src/css/projects.css">
+    <link rel="stylesheet" href="./src/css/social.css">
+    <link rel="stylesheet" href="./src/css/testimonials.css">
+</head>
+<body>
+    <header class="glass-nav">
+        <div class="container nav-content">
+            <div class="logo">Lester</div>
+            <nav id="desktop-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+            </nav>
+            <a href="mailto:lesnr_277@hotmail.com" class="btn-primary">Contact Me</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            <div class="container hero-content">
+                <p class="hero-subtitle">Hi, I am Lester Narvasta</p>
+                <h1 class="hero-title">Crafting <span class="text-gradient">Premium</span><br><span id="dynamic-text">Mobile Experiences.</span></h1>
+                <p class="hero-desc">Mobile Software Engineer with over 5 years of experience delivering robust and scalable Android & iOS applications for diverse industries.</p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary btn-glow">View Work</a>
+                    <a href="https://github.com/LSTR" target="_blank" class="btn-secondary">GitHub</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About & Experience Section (Bento Grid) -->
+        <section class="section about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Who I Am</h2>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Profile Card -->
+                    <div class="glass-card bento-item profile-card" data-delay="0s">
+                        <img src="./legacy/images/about.jpg" alt="Lester Narvasta" class="profile-img">
+                        <div class="profile-info">
+                            <h3>Lester Narvasta</h3>
+                            <p class="text-subtitle">Mobile Engineer (Android & iOS)</p>
+                            <p class="profile-bio">I enjoy being self-taught in this new era of technology, where innovation is part of our daily life. When not coding, I love traveling to the mountains to take a deep breath in nature.</p>
+                            <br>
+                            <a href="./legacy/cv/index.html" target="_blank" class="btn-primary" style="display:inline-block; margin-top: 0.5rem;">View Resume</a>
+                        </div>
+                    </div>
+
+                    <!-- Experience Stats Card -->
+                    <div class="glass-card bento-item stats-card text-center" data-delay="0.1s">
+                        <h2 class="text-gradient">5+</h2>
+                        <p style="color:var(--clr-text-secondary);">Years Experience</p>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="glass-card bento-item location-card" data-delay="0.2s">
+                        <h3>Base</h3>
+                        <p>Lima, Perú</p>
+                    </div>
+
+                    <!-- Skills Matrix -->
+                    <div class="glass-card bento-item skills-card" data-delay="0.3s">
+                        <h3>Core Tech Stack</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">Swift</span>
+                            <span class="tag">Android SDK</span>
+                            <span class="tag">iOS SDK</span>
+                            <span class="tag">Jetpack Compose</span>
+                            <span class="tag">SwiftUI</span>
+                            <span class="tag">Clean Architecture</span>
+                            <span class="tag">MVVM</span>
+                            <span class="tag">Coroutines</span>
+                        </div>
+                    </div>
+
+                    <!-- Industries Card -->
+                    <div class="glass-card bento-item industries-card" data-delay="0.4s">
+                        <h3>Industries</h3>
+                        <p>Fitness, Telecommunications, Commerce, Startups</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expanded Projects / Case Studies Section -->
+        <section class="section projects" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Selected Case Studies</h2>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- High Fidelity Project 1 -->
+                    <div class="project-card animate-elem">
+                        <div class="project-image-container">
+                            <div class="device-mockup">
+                                <div class="mockup-screen bg-blue">
+                                    <h4>(Your App UI Here)</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-role">Lead Mobile Engineer • 2021 - Present</div>
+                            <h3>Unified Commerce Platform</h3>
+                            <p class="project-description">Spearheaded the development of a flagship shopping application catering to millions of users. Engineered robust native experiences prioritizing speed, secure payments, and a frictionless checkout flow.</p>
+                            
+                            <div class="project-highlights">
+                                <ul>
+                                    <li>Architected native pipelines connecting massive localized product catalogs with real-time inventory sockets.</li>
+                                    <li>Developed a deeply integrated CI/CD flow, establishing a rigid automated testing matrix that improved crash-free sessions to 99.9%.</li>
+                                    <li>Mentored junior developers, instituting Clean Architecture and MVVM patterns across the entire mobile team.</li>
+                                </ul>
+                            </div>
+
+                            <div class="skill-tags" style="margin-bottom: var(--space-lg);">
+                                <span class="tag">Kotlin</span>
+                                <span class="tag">SwiftUI</span>
+                                <span class="tag">Clean Arch</span>
+                                <span class="tag">CI/CD</span>
+                            </div>
+                            
+                            <div class="project-actions">
+                                <a href="#" class="btn-primary">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- High Fidelity Project 2 -->
+                    <div class="project-card reverse animate-elem">
+                        <div class="project-image-container">
+                            <div class="device-mockup">
+                                <div class="mockup-screen bg-purple">
+                                    <h4>(Your App UI Here)</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-role">Android Developer • 2019 - 2021</div>
+                            <h3>Telecommunications Dashboard</h3>
+                            <p class="project-description">Developed core telecom tracking and customer dashboard mobile apps. Migrated heavily fragmented legacy configurations into a unified, modular architecture.</p>
+                            
+                            <div class="project-highlights">
+                                <ul>
+                                    <li>Executed a full migration of a legacy Java codebase to pure Kotlin utilizing modern Coroutines and Flow.</li>
+                                    <li>Implemented real-time billing and usage tracking widgets with intensive background data synchronization.</li>
+                                    <li>Optimized application payload size by 30% utilizing advanced ProGuard rules and modularizing resources.</li>
+                                </ul>
+                            </div>
+
+                            <div class="skill-tags" style="margin-bottom: var(--space-lg);">
+                                <span class="tag">Android SDK</span>
+                                <span class="tag">Kotlin Coroutines</span>
+                                <span class="tag">Dagger/Hilt</span>
+                            </div>
+                            
+                            <div class="project-actions">
+                                <a href="#" class="btn-secondary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- High Fidelity Project 3 -->
+                    <div class="project-card animate-elem">
+                        <div class="project-image-container">
+                            <div class="device-mockup">
+                                <div class="mockup-screen bg-green">
+                                    <h4>(Your App UI Here)</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-role">Mobile Developer • 2018 - 2019</div>
+                            <h3>Fitness Tracking Companion</h3>
+                            <p class="project-description">Launched a successful fitness tracking app reaching 100k+ downloads. Focused largely on integrating deeply with persistent device hardware sensors without draining battery life.</p>
+                            
+                            <div class="project-highlights">
+                                <ul>
+                                    <li>Engineered highly accurate persistent background location tracking utilizing fused location providers.</li>
+                                    <li>Developed complex mathematical smoothing algorithms for the pedometer syncing with device accelerometers.</li>
+                                    <li>Built real-time web-socket connections for live community leaderboards.</li>
+                                </ul>
+                            </div>
+
+                            <div class="skill-tags" style="margin-bottom: var(--space-lg);">
+                                <span class="tag">Java</span>
+                                <span class="tag">Location APIs</span>
+                                <span class="tag">WebSockets</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header animate-elem">
+                    <h2 class="section-title">Peer Feedback</h2>
+                    <div class="title-line"></div>
+                </div>
+
+                <div class="testimonials-container animate-elem">
+                    <!-- Testimonial 1 -->
+                    <div class="glass-card testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">Lester is a rare talent who bridges the gap between complex backend logic and pixel-perfect mobile interfaces. His work on our commerce app was instrumental to our growth.</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Marcus Chen</h4>
+                                <p>Engineering Manager @ GlobalTech</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="glass-card testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">The level of architectural discipline Lester brings to Android development is impressive. His migration of our legacy Java app to Kotlin was flawless.</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Sarah Jenkins</h4>
+                                <p>Lead iOS Architect @ HealthStream</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="glass-card testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">Incredible eye for detail. Lester doesn't just build features; he builds experiences. His focus on battery optimization for our fitness tracker was game-changing.</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>David Rodriguez</h4>
+                                <p>Product Owner @ FitPulse</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social / Connect Section -->
+        <section class="section social-section" id="connect">
+            <div class="container">
+                <div class="social-header animate-elem">
+                    <h2 class="social-title">Let's Connect</h2>
+                    <p style="color: var(--clr-text-secondary); font-size: 1.1rem;">Where you can find me online</p>
+                </div>
+
+                <div class="social-grid">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/lester-narvasta-ramirez/" target="_blank" class="social-card sc-linkedin animate-elem" data-delay="0s">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        <span class="social-name">LinkedIn</span>
+                        <span class="social-handle">Lester Narvasta Ramirez</span>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/LSTR" target="_blank" class="social-card sc-github animate-elem" data-delay="0.1s">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        <span class="social-name">GitHub</span>
+                        <span class="social-handle">@LSTR</span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:lesnr_277@hotmail.com" class="social-card sc-email animate-elem" data-delay="0.2s">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span class="social-name">Email</span>
+                        <span class="social-handle">lesnr_277@hotmail.com</span>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/LesterNarvasta" target="_blank" class="social-card sc-twitter animate-elem" data-delay="0.3s">
+                        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="social-icon">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                        <span class="social-name">Twitter</span>
+                        <span class="social-handle">@LesterNarvasta</span>
+                    </a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.05); color: var(--clr-text-secondary); font-size: 0.85rem;">
+                <p>&copy; 2026 Lester Narvasta.</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./src/js/app.js"></script>
+</body>
+</html>

@@ -1,93 +1,108 @@
+/* ─── Connect Section ────────────────────────────────────── */
 .social-section {
-    padding: var(--space-xl) 0 6rem 0;
+  background: var(--clr-bg-section);
+  border-top: 1px solid var(--clr-border);
 }
 
 .social-header {
-    text-align: center;
-    margin-bottom: var(--space-lg);
+  text-align: center;
+  margin-bottom: var(--space-lg);
 }
 
-.social-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-xs);
+.social-subtitle {
+  color: var(--clr-text-secondary);
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
+/* 4-card grid */
 .social-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-md);
-    max-width: 800px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .social-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-xl) var(--space-md);
-    background: var(--clr-bg-surface-glass);
-    backdrop-filter: var(--backdrop-blur);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-lg);
-    width: calc(50% - (var(--space-md) / 2));
-    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--clr-bg-glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: var(--t-smooth);
+  text-align: center;
 }
 
+/* Glow layer */
 .social-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%);
-    opacity: 0;
-    transition: var(--transition-smooth);
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
 }
+.social-card:hover::before { opacity: 1; }
 
-.social-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+/* Per-network glow */
+.sc-linkedin::before  { background: radial-gradient(circle at 50% 0%, rgba(0,119,181,0.15), transparent 70%); }
+.sc-github::before    { background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.07), transparent 70%); }
+.sc-twitter::before   { background: radial-gradient(circle at 50% 0%, rgba(29,161,242,0.15), transparent 70%); }
+.sc-playstore::before { background: radial-gradient(circle at 50% 0%, rgba(0,212,132,0.15), transparent 70%); }
+
+/* Border hover */
+.sc-linkedin:hover  { border-color: #0077b5; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,119,181,0.15); }
+.sc-github:hover    { border-color: rgba(255,255,255,0.3); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.05); }
+.sc-twitter:hover   { border-color: #1DA1F2; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(29,161,242,0.15); }
+.sc-playstore:hover { border-color: #00D484; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,212,132,0.15); }
+
+/* Icon */
+.social-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  transition: var(--t-fast);
 }
+.social-card:hover .social-icon-wrap { transform: scale(1.12); }
 
-.social-card:hover::before {
-    opacity: 1;
-}
-
-/* Unique Hover States per network */
-.sc-github:hover { border-color: rgba(255, 255, 255, 0.4); }
-.sc-linkedin:hover { border-color: #0077b5; box-shadow: 0 25px 50px -12px rgba(0, 119, 181, 0.2); }
-.sc-twitter:hover { border-color: #1DA1F2; box-shadow: 0 25px 50px -12px rgba(29, 161, 242, 0.2); }
-.sc-email:hover { border-color: var(--clr-accent-purple); box-shadow: 0 25px 50px -12px rgba(129, 140, 248, 0.2); }
-
-.social-icon {
-    margin-bottom: var(--space-sm);
-    color: var(--clr-text-primary);
-    transition: var(--transition-smooth);
-}
-
-.sc-linkedin:hover .social-icon { color: #0077b5; transform: scale(1.1); }
-.sc-twitter:hover .social-icon { color: #1DA1F2; transform: scale(1.1); }
-.sc-github:hover .social-icon { color: #fff; transform: scale(1.1); }
-.sc-email:hover .social-icon { color: var(--clr-accent-blue); transform: scale(1.1); }
+.social-icon { width: 26px; height: 26px; color: var(--clr-text-primary); }
+.sc-linkedin:hover .social-icon  { color: #0077b5; }
+.sc-github:hover .social-icon    { color: #ffffff; }
+.sc-twitter:hover .social-icon   { color: #1DA1F2; }
+.sc-playstore:hover .social-icon { color: #00D484; }
 
 .social-name {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--clr-text-primary);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--clr-text-primary);
 }
 
 .social-handle {
-    font-size: 0.95rem;
-    color: var(--clr-text-secondary);
-    margin-top: 5px;
+  font-size: 0.8rem;
+  color: var(--clr-text-secondary);
+  word-break: break-all;
 }
 
-@media (max-width: 600px) {
-    .social-card {
-        width: 100%;
-    }
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .social-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+  .social-grid { grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+  .social-card { padding: var(--space-lg) var(--space-sm); }
 }
