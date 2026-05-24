@@ -20,9 +20,16 @@
   <link rel="stylesheet" href="./src/css/about.css">
   <link rel="stylesheet" href="./src/css/projects.css">
   <link rel="stylesheet" href="./src/css/social.css">
+  <link rel="stylesheet" href="./src/css/experience.css">
   <link rel="stylesheet" href="./src/css/footer.css">
   <!-- JS: set js-ready immediately so reveal animations activate -->
   <script>document.documentElement.classList.add('js-ready');</script>
+
+  <meta property="og:title" content="Lester Narvasta | Mobile Engineer">
+  <meta property="og:description" content="Mobile Software Engineer with 8+ years building high-performance Android & iOS applications.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lstr.github.io">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
 </head>
 <body>
 
@@ -40,7 +47,7 @@
         <a href="#connect">Connect</a>
       </nav>
 
-      <a href="mailto:lesnr_277@hotmail.com" class="btn-primary nav-cta nav-cta-desktop">Contact Me</a>
+      <a href="#connect" class="btn-primary nav-cta nav-cta-desktop">Contact Me</a>
 
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -53,7 +60,7 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#connect">Connect</a>
-      <a href="mailto:lesnr_277@hotmail.com" class="nav-cta">Contact Me</a>
+      <a href="#connect" class="nav-cta">Contact Me</a>
     </nav>
   </header>
 
@@ -71,6 +78,10 @@
       <div class="container hero-inner">
         <!-- Left: text -->
         <div class="hero-text">
+          <div class="status-badge reveal" data-delay="0.1s">
+            <span class="status-dot"></span>
+            Available for high-impact projects
+          </div>
           <div class="hero-eyebrow">Mobile Engineer · Android &amp; iOS</div>
 
           <h1 class="hero-title">
@@ -79,9 +90,9 @@
           </h1>
 
           <p class="hero-desc">
-            Mobile Software Engineer with 5+ years building robust, scalable
-            Android &amp; iOS applications — from product conception to
-            Play Store and App Store launch.
+            Mobile Engineer dedicated to building premium, high-performance
+            Android &amp; iOS applications. Specialist in scalable architecture
+            and seamless user experiences across the fitness, ecommerce, and telecom sectors.
           </p>
 
           <div class="hero-actions">
@@ -128,9 +139,9 @@
             <p class="profile-name">Lester Narvasta</p>
             <p class="profile-role">Mobile Engineer · Android &amp; iOS</p>
             <p class="profile-bio">
-              Self-taught engineer who thrives in this new era of technology.
-              When I'm not pushing code, I'm recharging in the mountains —
-              nature is my reset button.
+              Self-taught engineer dedicated to <strong>crafting premium mobile experiences</strong> across the <strong>fitness, e-commerce, and telecom</strong> industries. Focused on building <strong>Connected Fitness</strong> and scalable wellness platforms.
+              <br><br>
+              When I’m offline, I recharge in the mountains—nature is my reset button and source of quiet inspiration.
             </p>
             <a href="./legacy/cv/index.html" target="_blank" class="btn-secondary profile-resume" id="btn-resume" style="display:none;">
               View Résumé ↗
@@ -145,7 +156,7 @@
               <div class="glass-card stat-card reveal" data-delay="0.1s">
                 <div class="stat-icon">📈</div>
                 <div>
-                  <div class="stat-value">5+</div>
+                  <div class="stat-value">8+</div>
                   <div class="stat-label">Years Experience</div>
                 </div>
               </div>
@@ -162,27 +173,103 @@
             <div class="glass-card stack-card reveal" data-delay="0.2s">
               <h3>Core Tech Stack</h3>
               <div class="skill-tags">
+                <!-- Android -->
                 <span class="tag"><span class="tag-icon">🟣</span> Kotlin</span>
-                <span class="tag"><span class="tag-icon">🍎</span> Swift</span>
-                <span class="tag"><span class="tag-icon">⚡</span> SwiftUI</span>
                 <span class="tag"><span class="tag-icon">🚀</span> Jetpack Compose</span>
                 <span class="tag"><span class="tag-icon">🤖</span> Android SDK</span>
-                <span class="tag"><span class="tag-icon">📱</span> iOS SDK</span>
-                <span class="tag"><span class="tag-icon">⚛️</span> React Native</span>
-                <span class="tag"><span class="tag-icon">🐦</span> Flutter</span>
-                <span class="tag"><span class="tag-icon">🔄</span> Coroutines / Flow</span>
-                <span class="tag"><span class="tag-icon">🏗️</span> Clean Architecture</span>
-                <span class="tag"><span class="tag-icon">💉</span> Dagger / Hilt</span>
-                <span class="tag"><span class="tag-icon">🔴</span> GraphQL</span>
-                <span class="tag"><span class="tag-icon">🔥</span> Firebase</span>
-                <span class="tag"><span class="tag-icon">🗄️</span> Room DB</span>
-                <span class="tag"><span class="tag-icon">🌐</span> Retrofit</span>
+                <span class="tag"><span class="tag-icon">🔄</span> Coroutines</span>
                 <span class="tag"><span class="tag-icon">🧪</span> MVVM / MVI</span>
+                <span class="tag"><span class="tag-icon">🏗️</span> Clean Architecture</span>
+                <span class="tag"><span class="tag-icon">💉</span> Hilt / Koin</span>
+                <span class="tag"><span class="tag-icon">📡</span> Bluetooth & BLE</span>
+                <span class="tag"><span class="tag-icon">🤖</span> AOSP / FOTA</span>
+                <!-- iOS -->
+                <span class="tag"><span class="tag-icon">🍎</span> Swift</span>
+                <span class="tag"><span class="tag-icon">⚡</span> SwiftUI</span>
+                <span class="tag"><span class="tag-icon">⌚</span> Apple Watch</span>
+                <!-- Cross-platform -->
+                <span class="tag"><span class="tag-icon">🌐</span> Kotlin Multiplatform</span>
+                <span class="tag"><span class="tag-icon">🎨</span> Compose Multiplatform</span>
+                <span class="tag"><span class="tag-icon">🐙</span> Git</span>
+                <span class="tag"><span class="tag-icon">🔷</span> .NET</span>
+                <span class="tag"><span class="tag-icon">⚛️</span> React Native</span>
+                <span class="tag"><span class="tag-icon">⚡</span> C++</span>
+                <span class="tag"><span class="tag-icon">☕</span> Java</span>
+                <span class="tag"><span class="tag-icon">🐘</span> PHP</span>
+                <span class="tag"><span class="tag-icon">🔥</span> Firebase</span>
+                <span class="tag"><span class="tag-icon">💬</span> Slack</span>
+                <span class="tag"><span class="tag-icon">🎨</span> Figma</span>
+                <!-- Services & Tools -->
+                <span class="tag"><span class="tag-icon">🗺️</span> Google Maps SDK</span>
+                <span class="tag"><span class="tag-icon">🔴</span> Apollo GraphQL</span>
+                <!-- CI/CD -->
+                <span class="tag"><span class="tag-icon">⚙️</span> GitHub Actions</span>
+                <span class="tag"><span class="tag-icon">🔹</span> Bitbucket</span>
+                <span class="tag"><span class="tag-icon">📋</span> Jira</span>
+                <span class="tag"><span class="tag-icon">📇</span> Trello / Confluence</span>
+                <span class="tag"><span class="tag-icon">📮</span> Postman</span>
+                <!-- Other -->
+                <span class="tag"><span class="tag-icon">🔌</span> Arduino</span>
+                <span class="tag"><span class="tag-icon">🔌</span> USB Serial</span>
+                <span class="tag"><span class="tag-icon">🗄️</span> MySQL / PostgreSQL / SQL Server</span>
+                <span class="tag"><span class="tag-icon">🌐</span> AngularJS / Node.js</span>
+                <!-- AI -->
+                <span class="tag"><span class="tag-icon">🤖</span> AI Tools</span>
               </div>
             </div>
 
           </div><!-- /.about-right -->
         </div><!-- /.about-grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         EXPERIENCE
+    ═══════════════════════════════════════ -->
+    <section class="section experience" id="experience" style="display:none;">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Experience</h2>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="timeline">
+          <!-- Item 1 -->
+          <div class="timeline-item reveal" data-delay="0.1s">
+            <div class="timeline-date">2021 — PRESENT</div>
+            <h3 class="timeline-title">Lead Mobile Engineer</h3>
+            <div class="timeline-company">Unified Commerce Platform</div>
+            <div class="timeline-content">
+              Leading the architecture and development of high-performance mobile applications. 
+              Driving technical excellence across Android and iOS teams while integrating 
+              complex features like secure payments and real-time inventory.
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item reveal" data-delay="0.2s">
+            <div class="timeline-date">2019 — 2021</div>
+            <h3 class="timeline-title">Senior Android Developer</h3>
+            <div class="timeline-company">Telecommunications Group</div>
+            <div class="timeline-content">
+              Modernized legacy Java systems to Kotlin, implementing reactive patterns with
+              Coroutines and Flow. Built real-time dashboards and optimized background 
+              data synchronization for millions of users.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item reveal" data-delay="0.3s">
+            <div class="timeline-date">2018 — 2019</div>
+            <h3 class="timeline-title">Mobile Developer</h3>
+            <div class="timeline-company">Fitness Tech Solutions</div>
+            <div class="timeline-content">
+              Engineered hardware-integrated features for sensor-driven tracking. 
+              Focused on performance optimization and battery-efficient background 
+              location processing.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
