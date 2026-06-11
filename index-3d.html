@@ -140,18 +140,43 @@
       height: 68px;
     }
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      border-radius: 11px;
+      background: var(--grad);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+    }
+    .logo:hover .logo-mark {
+      transform: translateY(-2px) rotate(-4deg);
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.6);
+    }
+    .logo-mark svg { width: 19px; height: 19px; }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 1.3rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
+      font-size: 1.02rem;
+      letter-spacing: 0.18em;
+      line-height: 1;
     }
-    .logo span {
-      background: var(--grad);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .logo-text small {
+      margin-top: 4px;
+      font-family: var(--font-body);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--text-dim);
     }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
@@ -240,30 +265,55 @@
     }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.8rem;
-      border-radius: 14px;
+      gap: 0.6rem;
+      padding: 0.9rem 1.9rem;
+      border-radius: 99px;
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
-      transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+      overflow: hidden;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s, border-color 0.3s;
       will-change: transform;
     }
+    .btn svg {
+      width: 17px; height: 17px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.3s var(--ease-out);
+    }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn img { width: 18px; height: 18px; display: block; }
     .btn-grad {
       background: var(--grad);
       color: #fff;
       box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4);
     }
-    .btn-grad:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 44px rgba(139, 92, 246, 0.55); }
+    /* sheen sweep across the gradient button */
+    .btn-grad::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+      transform: translateX(-130%);
+      transition: transform 0.65s ease;
+    }
+    .btn-grad:hover::before { transform: translateX(130%); }
+    .btn-grad:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 44px rgba(139, 92, 246, 0.6); }
     .btn-ghost {
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
       backdrop-filter: blur(8px);
     }
-    .btn-ghost:hover { transform: translateY(-3px); background: var(--surface-2); }
+    .btn-ghost:hover {
+      transform: translateY(-3px);
+      background: var(--surface-2);
+      border-color: rgba(139, 92, 246, 0.55);
+      box-shadow: 0 8px 28px rgba(139, 92, 246, 0.22);
+    }
 
     /* hero text gets subtle parallax via JS (transform) */
     .hero-text { will-change: transform; }
@@ -341,9 +391,11 @@
     .chip3d small { color: var(--text-dim); font-weight: 400; }
     .chip3d img { width: 16px; height: 16px; display: block; }
     .chip3d svg { width: 16px; height: 16px; stroke: #34d399; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .chip-1 { top: 9%; left: -34%; transform: translateZ(70px); animation-delay: -1.5s; }
-    .chip-2 { bottom: 22%; right: -30%; transform: translateZ(95px); animation-delay: -3.2s; }
-    .chip-3 { bottom: -4%; left: -22%; transform: translateZ(50px); animation-delay: -5s; }
+    .chip-1 { top: 6%; left: -34%; transform: translateZ(70px); animation-delay: -1.5s; }
+    .chip-2 { bottom: 20%; right: -30%; transform: translateZ(95px); animation-delay: -3.2s; }
+    .chip-3 { bottom: -4%; left: -20%; transform: translateZ(50px); animation-delay: -5s; }
+    .chip-4 { top: 12%; right: -26%; transform: translateZ(55px); animation-delay: -2.4s; }
+    .chip-5 { top: 47%; left: -28%; transform: translateZ(85px); animation-delay: -4.1s; }
 
     /* mini UI inside the screen */
     .mini-greet { margin-top: 34px; font-family: var(--font-display); }
@@ -513,7 +565,28 @@
       font-weight: 700;
       letter-spacing: -0.01em;
     }
-    .pcard p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.65; flex: 1; }
+    .pcard p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
+    .pcard .phl {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      flex: 1;
+    }
+    .pcard .phl li {
+      position: relative;
+      padding-left: 1.05rem;
+      color: var(--text-dim);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+    .pcard .phl li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.42em;
+      width: 6px; height: 6px;
+      border-radius: 2px;
+      background: var(--grad);
+    }
     .pcard .pmetric {
       font-family: var(--font-display);
       font-weight: 800;
@@ -532,6 +605,112 @@
       background: rgba(255, 255, 255, 0.04);
       color: var(--text-dim);
     }
+
+    /* ── Card cover image (opens the case study lightbox) ── */
+    .pcover {
+      display: block;
+      width: calc(100% + 3.6rem);
+      margin: -1.8rem -1.8rem 0;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid var(--border);
+      background: none;
+      cursor: zoom-in;
+      position: relative;
+      overflow: hidden;
+      font: inherit;
+    }
+    .pcover img {
+      display: block;
+      width: 100%;
+      height: 168px;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .pcover:hover img { transform: scale(1.06); }
+    .pcover-hint {
+      position: absolute;
+      right: 0.7rem; bottom: 0.7rem;
+      padding: 0.32rem 0.75rem;
+      border-radius: 99px;
+      background: rgba(5, 6, 15, 0.65);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(6px);
+      color: var(--text);
+      font-size: 0.72rem;
+      font-weight: 600;
+      opacity: 0.75;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+    .pcover:hover .pcover-hint { opacity: 1; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: clamp(0.8rem, 3vw, 2.5rem);
+    }
+    .lightbox[hidden] { display: none; }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 6, 15, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .lightbox-panel {
+      position: relative;
+      margin: 0;
+      max-width: min(1150px, 100%);
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-2);
+      box-shadow: 0 50px 120px -20px rgba(0, 0, 0, 0.85), 0 0 80px rgba(139, 92, 246, 0.12);
+      animation: lb-in 0.35s var(--ease-out);
+    }
+    @keyframes lb-in {
+      from { opacity: 0; transform: scale(0.94) translateY(18px); }
+    }
+    .lb-scroll { overflow: auto; min-height: 0; }
+    .lb-scroll img { display: block; width: 100%; height: auto; }
+    .lightbox-close {
+      position: absolute;
+      top: 0.8rem; right: 0.8rem;
+      z-index: 2;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(5, 6, 15, 0.6);
+      backdrop-filter: blur(6px);
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .lightbox-close:hover { background: rgba(139, 92, 246, 0.4); transform: scale(1.08); }
+    .lightbox-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .lightbox-caption b { font-family: var(--font-display); font-weight: 700; }
+    .lightbox-caption a { color: var(--text-dim); text-decoration: none; white-space: nowrap; }
+    .lightbox-caption a:hover { color: var(--text); }
 
     /* ═══════════════ TECH ORBIT ═══════════════ */
     .orbit-wrap {
@@ -682,6 +861,7 @@
       .phone-stage { order: -1; margin-top: 2rem; }
       .phone { width: 220px; height: 450px; }
       .chip-1 { left: -18%; } .chip-2 { right: -14%; } .chip-3 { left: -10%; }
+      .chip-4 { right: -16%; } .chip-5 { display: none; }
       .stats-strip { grid-template-columns: repeat(2, 1fr); }
       .projects-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
       .connect-grid { grid-template-columns: repeat(2, 1fr); }
@@ -710,9 +890,14 @@
   <!-- ═══════════════ NAV ═══════════════ -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
-      <a href="#home" class="logo">Lester<span>.</span></a>
+      <a href="#home" class="logo" aria-label="Home — Lester, Mobile Engineer">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="11" y1="18.5" x2="13" y2="18.5"></line></svg>
+        </span>
+        <span class="logo-text">LESTER<small>Mobile Engineer</small></span>
+      </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#projects">Projects</a>
+        <a href="#projects">Experience</a>
         <a href="#stack">Stack</a>
         <a href="#connect">Connect</a>
         <a href="#connect" class="nav-cta">Contact Me</a>
@@ -738,8 +923,14 @@
             fitness, ecommerce, and telecom.
           </p>
           <div class="hero-actions reveal" style="--d: 0.34s;">
-            <a href="#projects" class="btn btn-grad">View Projects</a>
-            <a href="https://github.com/LSTR" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+            <a href="#projects" class="btn btn-grad">
+              View My Work
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="https://github.com/LSTR" target="_blank" rel="noopener" class="btn btn-ghost">
+              <img src="./src/assets/icons/github.svg" alt="">
+              GitHub
+            </a>
           </div>
         </div>
 
@@ -785,13 +976,12 @@
               </div>
             </div>
 
-            <!-- floating chips at different depths -->
+            <!-- floating tech badges at different depths -->
             <div class="chip3d chip-1"><img src="./src/assets/icons/jetpackcompose.svg" alt=""> <span>Jetpack Compose</span></div>
-            <div class="chip3d chip-2"><img src="./src/assets/icons/swift.svg" alt=""> <span>SwiftUI <small>· Apple Watch</small></span></div>
-            <div class="chip3d chip-3">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-              <span>99.9% <small>crash-free</small></span>
-            </div>
+            <div class="chip3d chip-2"><img src="./src/assets/icons/swift.svg" alt=""> <span>SwiftUI</span></div>
+            <div class="chip3d chip-3"><img src="./src/assets/icons/kotlin.svg" alt=""> <span>Kotlin</span></div>
+            <div class="chip3d chip-4"><img src="./src/assets/icons/firebase.svg" alt=""> <span>Firebase</span></div>
+            <div class="chip3d chip-5"><img src="./src/assets/icons/bluetooth.svg" alt=""> <span>Bluetooth <small>· BLE</small></span></div>
           </div>
         </div>
 
@@ -814,63 +1004,90 @@
     <section class="section" id="projects">
       <div class="container">
         <div class="section-head reveal">
-          <div class="kicker">Selected Work</div>
-          <h2>Selected <span class="grad-text">Case Studies</span></h2>
+          <div class="kicker">What I've Built</div>
+          <h2>Selected <span class="grad-text">Engineering Experiences</span></h2>
         </div>
 
         <div class="projects-grid">
 
           <article class="pcard tilt reveal rv-left" style="--d: 0s;">
             <div class="glare"></div>
+            <button class="pcover" data-study="./src/assets/experiences/delivery-full.jpg" data-study-title="Delivery Platform" aria-label="View the full Delivery Platform case study">
+              <img src="./src/assets/experiences/delivery-cover.jpg" alt="Delivery Platform — dashboard, courier app and POS printer" loading="lazy" width="800" height="391">
+              <span class="pcover-hint">View case study ↗</span>
+            </button>
             <div class="picon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
             </div>
-            <div class="prole">Lead Mobile Engineer · 2021 – Present</div>
-            <h3>Unified Commerce Platform</h3>
+            <div class="prole">Mobile Commerce &amp; Logistics</div>
+            <h3>Delivery Platform</h3>
             <p>
-              Flagship shopping app serving millions of users. Native pipelines
-              connecting massive localised catalogs with real-time inventory,
-              secure payments, and frictionless checkout.
+              Multi-tenant delivery &amp; commerce ecosystem connecting restaurants,
+              couriers and customers — order management, logistics, payments and
+              business intelligence across multiple markets.
             </p>
-            <div class="pmetric">99.9% crash-free sessions</div>
+            <ul class="phl">
+              <li>Led Android architecture and platform evolution</li>
+              <li>Real-time order &amp; delivery tracking with GraphQL data layers</li>
+              <li>Thermal printer &amp; POS integrations, offline-first reliability</li>
+            </ul>
+            <div class="pmetric">400+ businesses · 99.9% platform stability</div>
             <div class="ptags">
-              <span>Kotlin</span><span>SwiftUI</span><span>Compose</span><span>CI/CD</span>
+              <span>Kotlin</span><span>Jetpack Compose</span><span>GraphQL</span><span>Firebase</span>
             </div>
           </article>
 
           <article class="pcard warm tilt reveal rv-flip" style="--d: 0.12s;">
             <div class="glare"></div>
+            <button class="pcover" data-study="./src/assets/experiences/fitness-full.jpg" data-study-title="Fitness Platform" aria-label="View the full Fitness Platform case study">
+              <img src="./src/assets/experiences/fitness-cover.jpg" alt="Fitness Platform — Concept2 rower, workout app, Apple Watch and Polar sensor" loading="lazy" width="800" height="352">
+              <span class="pcover-hint">View case study ↗</span>
+            </button>
             <div class="picon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49"></path><path d="M7.76 16.25a6 6 0 0 1 0-8.49"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M4.93 19.07a10 10 0 0 1 0-14.14"></path></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
             </div>
-            <div class="prole">Android Developer · 2019 – 2021</div>
-            <h3>Telecommunications Dashboard</h3>
+            <div class="prole">Bluetooth, Wearables &amp; IoT</div>
+            <h3>Fitness Platform</h3>
             <p>
-              Core telecom tracking &amp; customer dashboard apps. Full migration of a
-              legacy Java codebase to pure Kotlin with Coroutines &amp; Flow, plus
-              real-time billing widgets.
+              Mobile apps connecting fitness equipment, wearables and biometric
+              sensors for real-time workout tracking, athlete insights and
+              connected fitness experiences.
             </p>
-            <div class="pmetric">−30% app payload</div>
+            <ul class="phl">
+              <li>BLE communication protocols, device discovery &amp; pairing</li>
+              <li>Concept2 PM5, treadmills, rowers &amp; indoor bikes</li>
+              <li>Apple Watch &amp; Polar heart-rate integrations</li>
+            </ul>
+            <div class="pmetric">Real-time metrics from connected hardware</div>
             <div class="ptags">
-              <span>Android SDK</span><span>Coroutines</span><span>Hilt</span><span>Room</span>
+              <span>Kotlin</span><span>BLE</span><span>Apple Watch</span><span>Polar SDK</span>
             </div>
           </article>
 
           <article class="pcard cool tilt reveal rv-right" style="--d: 0.24s;">
             <div class="glare"></div>
+            <button class="pcover" data-study="./src/assets/experiences/telecom-full.jpg" data-study-title="Telecom Operations" aria-label="View the full Telecom Operations case study">
+              <img src="./src/assets/experiences/telecom-cover.jpg" alt="Telecom Operations — network monitoring map, field app and cell tower" loading="lazy" width="800" height="359">
+              <span class="pcover-hint">View case study ↗</span>
+            </button>
             <div class="picon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49"></path><path d="M7.76 16.25a6 6 0 0 1 0-8.49"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M4.93 19.07a10 10 0 0 1 0-14.14"></path></svg>
             </div>
-            <div class="prole">Mobile Developer · 2018 – 2019</div>
-            <h3>Fitness Tracking Companion</h3>
+            <div class="prole">Enterprise Mobility &amp; Field Operations</div>
+            <h3>Telecom Operations</h3>
             <p>
-              Hardware-integrated fitness tracker with battery-efficient background
-              location, sensor-fusion pedometer smoothing, and live WebSocket
-              community leaderboards.
+              Enterprise mobile solutions for large-scale telecom environments —
+              infrastructure monitoring, incident management and real-time
+              critical information for distributed field teams.
             </p>
-            <div class="pmetric">100k+ downloads</div>
+            <ul class="phl">
+              <li>Operational dashboards &amp; performance reporting</li>
+              <li>Geolocation &amp; mapping workflows for field teams</li>
+              <li>Offline-first reliability in low-connectivity environments</li>
+            </ul>
+            <div class="pmetric">Large-scale ops · reliable offline access</div>
             <div class="ptags">
-              <span>Java</span><span>Location APIs</span><span>WebSockets</span><span>Sensors</span>
+              <span>Kotlin</span><span>Google Maps</span><span>Firebase</span><span>REST APIs</span>
             </div>
           </article>
 
@@ -950,6 +1167,21 @@
     </section>
 
   </main>
+
+  <!-- ═══════════════ CASE STUDY LIGHTBOX ═══════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Case study viewer" hidden>
+    <div class="lightbox-backdrop" data-close></div>
+    <figure class="lightbox-panel">
+      <button class="lightbox-close" data-close aria-label="Close case study">✕</button>
+      <div class="lb-scroll">
+        <img id="lightbox-img" src="" alt="">
+      </div>
+      <figcaption class="lightbox-caption">
+        <b id="lightbox-title"></b>
+        <a id="lightbox-link" href="" target="_blank" rel="noopener">Open full size ↗</a>
+      </figcaption>
+    </figure>
+  </div>
 
   <footer>
     <div class="container">
@@ -1211,6 +1443,42 @@
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    /* ── Case study lightbox ── */
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+    var lbTitle = document.getElementById('lightbox-title');
+    var lbLink = document.getElementById('lightbox-link');
+    var lbLastFocus = null;
+
+    function openLightbox(src, title) {
+      lbImg.src = src; // full image is only fetched here, on first open
+      lbImg.alt = title + ' — full case study';
+      lbTitle.textContent = title;
+      lbLink.href = src;
+      lbLastFocus = document.activeElement;
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lb.querySelector('.lightbox-close').focus();
+    }
+
+    function closeLightbox() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      if (lbLastFocus) lbLastFocus.focus();
+    }
+
+    document.querySelectorAll('.pcover').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openLightbox(btn.getAttribute('data-study'), btn.getAttribute('data-study-title'));
+      });
+    });
+    lb.addEventListener('click', function (e) {
+      if (e.target.hasAttribute('data-close')) closeLightbox();
+    });
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !lb.hidden) closeLightbox();
+    });
 
     if (reducedMotion) return; // skip pointer-driven 3D below
 
