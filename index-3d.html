@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lester Narvasta | Mobile Engineer — 3D Experience</title>
+  <title>Lester Narvasta | Mobile Engineer</title>
   <meta name="description" content="Mobile Software Engineer specializing in high-performance Android & iOS applications — Kotlin, Swift, Compose, SwiftUI.">
   <meta name="author" content="Lester Narvasta">
 
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
 
-  <meta property="og:title" content="Lester Narvasta | Mobile Engineer — 3D Experience">
+  <meta property="og:title" content="Lester Narvasta | Mobile Engineer">
   <meta property="og:description" content="Mobile Software Engineer with 8+ years building high-performance Android & iOS applications.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lester.is-a.dev/index-3d.html">
@@ -78,7 +78,7 @@
       width: 60vmax; height: 60vmax;
       border-radius: 50%;
       filter: blur(120px);
-      opacity: 0.16;
+      opacity: 0.10;
       animation: drift 26s ease-in-out infinite alternate;
     }
     .aurora::before {
@@ -93,6 +93,30 @@
     @keyframes drift {
       from { transform: translate3d(0, 0, 0) scale(1); }
       to   { transform: translate3d(8vmax, 6vmax, 0) scale(1.15); }
+    }
+
+    /* Soft light that follows the cursor — gives the dark canvas dimension */
+    .spotlight {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        640px circle at var(--mx, 50%) var(--my, 30%),
+        rgba(139, 92, 246, 0.13),
+        rgba(34, 211, 238, 0.05) 45%,
+        transparent 70%
+      );
+    }
+
+    /* Film grain: hides gradient banding, adds texture */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     main, header, footer { position: relative; z-index: 1; }
@@ -315,6 +339,8 @@
       animation: float 7s ease-in-out infinite;
     }
     .chip3d small { color: var(--text-dim); font-weight: 400; }
+    .chip3d img { width: 16px; height: 16px; display: block; }
+    .chip3d svg { width: 16px; height: 16px; stroke: #34d399; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
     .chip-1 { top: 9%; left: -34%; transform: translateZ(70px); animation-delay: -1.5s; }
     .chip-2 { bottom: 22%; right: -30%; transform: translateZ(95px); animation-delay: -3.2s; }
     .chip-3 { bottom: -4%; left: -22%; transform: translateZ(50px); animation-delay: -5s; }
@@ -463,10 +489,14 @@
       border-radius: 16px;
       display: grid;
       place-items: center;
-      font-size: 1.5rem;
       background: var(--grad);
       box-shadow: 0 10px 26px rgba(139, 92, 246, 0.4);
       transform: translateZ(55px);
+    }
+    .picon svg {
+      width: 26px; height: 26px;
+      stroke: #fff; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
     .pcard.warm .picon { background: var(--grad-warm); box-shadow: 0 10px 26px rgba(244, 114, 182, 0.35); }
     .pcard.cool .picon { background: linear-gradient(135deg, #22d3ee, #34d399); box-shadow: 0 10px 26px rgba(34, 211, 238, 0.35); }
@@ -544,9 +574,10 @@
       border: 1px solid var(--border);
       display: grid;
       place-items: center;
-      font-size: 1.3rem;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
     }
+    .sat img { width: 24px; height: 24px; display: block; }
+    .orbit-core svg { width: 46px; height: 46px; }
     /* counter-rotate satellites so icons stay upright-ish; positions on circle */
     .r1 .sat:nth-child(1) { transform: rotateZ(0deg)   translateX(140px) rotateZ(0deg)    rotateX(-68deg); }
     .r1 .sat:nth-child(2) { transform: rotateZ(120deg) translateX(140px) rotateZ(-120deg) rotateX(-68deg); }
@@ -595,6 +626,7 @@
     }
     .ccard:hover { border-color: rgba(139, 92, 246, 0.5); box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 40px rgba(139,92,246,0.15); }
     .ccard svg { width: 30px; height: 30px; stroke: var(--text); transform: translateZ(35px); }
+    .ccard img { width: 28px; height: 28px; display: block; transform: translateZ(35px); }
     .ccard b { font-weight: 600; font-size: 0.95rem; transform: translateZ(25px); }
     .ccard span { color: var(--text-dim); font-size: 0.8rem; transform: translateZ(20px); }
 
@@ -672,6 +704,8 @@
 
   <canvas id="starfield" aria-hidden="true"></canvas>
   <div class="aurora" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
   <!-- ═══════════════ NAV ═══════════════ -->
   <header class="nav" id="nav">
@@ -696,8 +730,7 @@
           <div class="badge reveal" style="--d: 0s;"><span class="dot"></span> Available for high-impact projects</div>
           <h1 class="reveal" style="--d: 0.1s;">
             Building <span class="grad-text">Premium</span><br>
-            Mobile Experiences<br>
-            in <span class="grad-text">3D</span> Depth.
+            Mobile <span class="grad-text">Experiences</span>.
           </h1>
           <p class="lede reveal" style="--d: 0.22s;">
             Mobile Engineer crafting high-performance Android &amp; iOS applications.
@@ -753,9 +786,12 @@
             </div>
 
             <!-- floating chips at different depths -->
-            <div class="chip3d chip-1">🚀 <span>Jetpack Compose</span></div>
-            <div class="chip3d chip-2">⚡ <span>SwiftUI <small>· Apple Watch</small></span></div>
-            <div class="chip3d chip-3">📈 <span>99.9% <small>crash-free</small></span></div>
+            <div class="chip3d chip-1"><img src="./src/assets/icons/jetpackcompose.svg" alt=""> <span>Jetpack Compose</span></div>
+            <div class="chip3d chip-2"><img src="./src/assets/icons/swift.svg" alt=""> <span>SwiftUI <small>· Apple Watch</small></span></div>
+            <div class="chip3d chip-3">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              <span>99.9% <small>crash-free</small></span>
+            </div>
           </div>
         </div>
 
@@ -779,14 +815,16 @@
       <div class="container">
         <div class="section-head reveal">
           <div class="kicker">Selected Work</div>
-          <h2>Case Studies in <span class="grad-text">Depth</span></h2>
+          <h2>Selected <span class="grad-text">Case Studies</span></h2>
         </div>
 
         <div class="projects-grid">
 
           <article class="pcard tilt reveal rv-left" style="--d: 0s;">
             <div class="glare"></div>
-            <div class="picon">🛍️</div>
+            <div class="picon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </div>
             <div class="prole">Lead Mobile Engineer · 2021 – Present</div>
             <h3>Unified Commerce Platform</h3>
             <p>
@@ -802,7 +840,9 @@
 
           <article class="pcard warm tilt reveal rv-flip" style="--d: 0.12s;">
             <div class="glare"></div>
-            <div class="picon">📡</div>
+            <div class="picon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49"></path><path d="M7.76 16.25a6 6 0 0 1 0-8.49"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M4.93 19.07a10 10 0 0 1 0-14.14"></path></svg>
+            </div>
             <div class="prole">Android Developer · 2019 – 2021</div>
             <h3>Telecommunications Dashboard</h3>
             <p>
@@ -818,7 +858,9 @@
 
           <article class="pcard cool tilt reveal rv-right" style="--d: 0.24s;">
             <div class="glare"></div>
-            <div class="picon">🏃</div>
+            <div class="picon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
             <div class="prole">Mobile Developer · 2018 – 2019</div>
             <h3>Fitness Tracking Companion</h3>
             <p>
@@ -845,17 +887,19 @@
         </div>
 
         <div class="orbit-wrap reveal rv-zoom" aria-hidden="true">
-          <div class="orbit-core">📱</div>
+          <div class="orbit-core">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="11" y1="18.5" x2="13" y2="18.5"></line></svg>
+          </div>
           <div class="orbit-ring r1">
-            <div class="sat">🟣</div>
-            <div class="sat">🍎</div>
-            <div class="sat">🚀</div>
+            <div class="sat"><img src="./src/assets/icons/kotlin.svg" alt="Kotlin"></div>
+            <div class="sat"><img src="./src/assets/icons/apple.svg" alt="Apple"></div>
+            <div class="sat"><img src="./src/assets/icons/jetpackcompose.svg" alt="Jetpack Compose"></div>
           </div>
           <div class="orbit-ring r2">
-            <div class="sat">⚡</div>
-            <div class="sat">🔄</div>
-            <div class="sat">📡</div>
-            <div class="sat">🔥</div>
+            <div class="sat"><img src="./src/assets/icons/swift.svg" alt="Swift"></div>
+            <div class="sat"><img src="./src/assets/icons/android.svg" alt="Android"></div>
+            <div class="sat"><img src="./src/assets/icons/bluetooth.svg" alt="Bluetooth"></div>
+            <div class="sat"><img src="./src/assets/icons/firebase.svg" alt="Firebase"></div>
           </div>
         </div>
 
@@ -887,24 +931,18 @@
           </a>
 
           <a class="ccard tilt reveal rv-zoom" style="--d: 0.08s;" href="https://github.com/LSTR" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
+            <img src="./src/assets/icons/github.svg" alt="">
             <b>GitHub</b><span>@LSTR</span>
           </a>
 
           <a class="ccard tilt reveal rv-zoom" style="--d: 0.16s;" href="https://play.google.com/store/apps/developer?id=LSTR" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+            <img src="./src/assets/icons/googleplay.svg" alt="">
             <b>Play Store</b><span>My Apps</span>
           </a>
 
           <a class="ccard tilt reveal rv-zoom" style="--d: 0.24s;" href="https://twitter.com/LesterNarvasta" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-            </svg>
-            <b>Twitter</b><span>@LesterNarvasta</span>
+            <img src="./src/assets/icons/x.svg" alt="">
+            <b>X / Twitter</b><span>@LesterNarvasta</span>
           </a>
 
         </div>
@@ -925,68 +963,236 @@
 
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ── Starfield: depth-projected particles drifting toward the viewer ── */
+    /* ── Constellation field: slow-drifting particles with faint links.
+          Calmer and more "product site" than a warp starfield. ── */
     var canvas = document.getElementById('starfield');
     var ctx = canvas.getContext('2d');
-    var stars = [];
-    var STAR_COUNT = 160;
-    var W, H, CX, CY;
+    var dots = [];
+    var W, H, DPR;
+    var LINK_DIST = 130;
 
     function resize() {
-      W = canvas.width = window.innerWidth * devicePixelRatio;
-      H = canvas.height = window.innerHeight * devicePixelRatio;
+      DPR = Math.min(devicePixelRatio || 1, 2);
+      W = canvas.width = window.innerWidth * DPR;
+      H = canvas.height = window.innerHeight * DPR;
       canvas.style.width = window.innerWidth + 'px';
       canvas.style.height = window.innerHeight + 'px';
-      CX = W / 2; CY = H / 2;
     }
 
-    function spawn(star, randomZ) {
-      star.x = (Math.random() - 0.5) * W * 2;
-      star.y = (Math.random() - 0.5) * H * 2;
-      star.z = randomZ ? Math.random() * 1000 : 1000;
-      star.hue = Math.random() < 0.5 ? 258 : 190; // violet or cyan
-    }
-
-    function initStars() {
-      stars = [];
-      for (var i = 0; i < STAR_COUNT; i++) {
-        var s = {};
-        spawn(s, true);
-        stars.push(s);
+    function initDots() {
+      var count = Math.min(110, Math.floor(window.innerWidth / 14));
+      dots = [];
+      for (var i = 0; i < count; i++) {
+        dots.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.14 * DPR,
+          vy: (Math.random() - 0.5) * 0.14 * DPR,
+          r: (0.6 + Math.random() * 1.1) * DPR,
+          depth: 0.35 + Math.random() * 0.65,      // parallax + brightness factor
+          phase: Math.random() * Math.PI * 2,       // twinkle offset
+          tint: Math.random() < 0.18 ? '139,92,246' : (Math.random() < 0.12 ? '34,211,238' : '210,216,255')
+        });
       }
     }
 
-    var mouseX = 0, mouseY = 0; // -1 .. 1
+    var mouseX = 0, mouseY = 0;            // -1 .. 1
+    var cursorX = -1e9, cursorY = -1e9;    // canvas px, offscreen until first move
+    var rootStyle = document.documentElement.style;
     window.addEventListener('pointermove', function (e) {
       mouseX = (e.clientX / window.innerWidth) * 2 - 1;
       mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+      cursorX = e.clientX * DPR;
+      cursorY = e.clientY * DPR;
+      // spotlight follows the cursor
+      rootStyle.setProperty('--mx', e.clientX + 'px');
+      rootStyle.setProperty('--my', e.clientY + 'px');
     }, { passive: true });
 
-    function tick() {
+    /* ── Bokeh: large soft light orbs drifting behind the particles ── */
+    var orbs = [];
+    function initOrbs() {
+      orbs = [];
+      var n = window.innerWidth < 720 ? 4 : 7;
+      for (var i = 0; i < n; i++) {
+        orbs.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.06 * DPR,
+          vy: (Math.random() - 0.5) * 0.05 * DPR,
+          r: (70 + Math.random() * 110) * DPR,
+          tint: Math.random() < 0.5 ? '139,92,246' : '34,211,238',
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+    }
+
+    /* ── Shooting stars ── */
+    var meteors = [];
+    var nextMeteor = 2500;
+    function spawnMeteor(t) {
+      var leftward = Math.random() < 0.5;
+      meteors.push({
+        x: W * (0.15 + Math.random() * 0.7),
+        y: H * Math.random() * 0.4,
+        vx: (leftward ? -1 : 1) * (5 + Math.random() * 4) * DPR,
+        vy: (2 + Math.random() * 2) * DPR,
+        life: 0,
+        max: 55 + Math.random() * 35
+      });
+      nextMeteor = t + 3500 + Math.random() * 5500;
+    }
+
+    function tick(t) {
       ctx.clearRect(0, 0, W, H);
-      var driftX = mouseX * 40 * devicePixelRatio;
-      var driftY = mouseY * 40 * devicePixelRatio;
-      for (var i = 0; i < stars.length; i++) {
-        var s = stars[i];
-        s.z -= 0.8;
-        if (s.z <= 1) spawn(s, false);
-        var k = 600 / s.z;
-        var px = CX + (s.x - driftX) * k * 0.1;
-        var py = CY + (s.y - driftY) * k * 0.1;
-        if (px < 0 || px > W || py < 0 || py > H) continue;
-        var size = (1 - s.z / 1000) * 2.4 * devicePixelRatio;
-        var alpha = (1 - s.z / 1000) * 0.85;
+      var link = LINK_DIST * DPR;
+      var cursorLink = 260 * DPR;
+      var i, j, a, b, dx, dy, dist, alpha;
+
+      // bokeh orbs (back layer), breathing slowly
+      for (i = 0; i < orbs.length; i++) {
+        var o = orbs[i];
+        o.x += o.vx;
+        o.y += o.vy;
+        if (o.x < -o.r) o.x = W + o.r; else if (o.x > W + o.r) o.x = -o.r;
+        if (o.y < -o.r) o.y = H + o.r; else if (o.y > H + o.r) o.y = -o.r;
+        var breathe = 0.05 + 0.025 * Math.sin(t * 0.0004 + o.phase);
+        var g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+        g.addColorStop(0, 'rgba(' + o.tint + ',' + breathe + ')');
+        g.addColorStop(1, 'rgba(' + o.tint + ',0)');
+        ctx.fillStyle = g;
         ctx.beginPath();
-        ctx.fillStyle = 'hsla(' + s.hue + ', 90%, 72%, ' + alpha + ')';
-        ctx.arc(px, py, size, 0, Math.PI * 2);
+        ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
         ctx.fill();
       }
+
+      for (i = 0; i < dots.length; i++) {
+        a = dots[i];
+        // gentle attraction toward the cursor inside its radius
+        dx = cursorX - a.x;
+        dy = cursorY - a.y;
+        dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < cursorLink && dist > 1) {
+          a.vx += (dx / dist) * 0.022 * DPR;
+          a.vy += (dy / dist) * 0.022 * DPR;
+        }
+        // cap speed so attraction never snowballs
+        var sp = Math.sqrt(a.vx * a.vx + a.vy * a.vy);
+        var maxSp = 0.4 * DPR;
+        if (sp > maxSp) { a.vx = a.vx / sp * maxSp; a.vy = a.vy / sp * maxSp; }
+
+        a.x += a.vx;
+        a.y += a.vy;
+        if (a.x < -10) a.x = W + 10; else if (a.x > W + 10) a.x = -10;
+        if (a.y < -10) a.y = H + 10; else if (a.y > H + 10) a.y = -10;
+        // parallax offset, deeper dots move more
+        a.px = a.x - mouseX * 22 * a.depth * DPR;
+        a.py = a.y - mouseY * 16 * a.depth * DPR;
+      }
+
+      // faint links between close particles
+      ctx.lineWidth = 1;
+      for (i = 0; i < dots.length; i++) {
+        a = dots[i];
+        for (j = i + 1; j < dots.length; j++) {
+          b = dots[j];
+          dx = a.px - b.px; dy = a.py - b.py;
+          dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < link) {
+            ctx.strokeStyle = 'rgba(160, 168, 220, ' + ((1 - dist / link) * 0.09) + ')';
+            ctx.beginPath();
+            ctx.moveTo(a.px, a.py);
+            ctx.lineTo(b.px, b.py);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // glow halo around the cursor itself
+      if (cursorX > -1e8) {
+        var halo = ctx.createRadialGradient(cursorX, cursorY, 0, cursorX, cursorY, 150 * DPR);
+        halo.addColorStop(0, 'rgba(167, 139, 250, 0.14)');
+        halo.addColorStop(0.5, 'rgba(34, 211, 238, 0.05)');
+        halo.addColorStop(1, 'rgba(167, 139, 250, 0)');
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(cursorX, cursorY, 150 * DPR, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // constellation lines from the cursor to nearby particles
+      ctx.lineWidth = 1.6;
+      for (i = 0; i < dots.length; i++) {
+        a = dots[i];
+        dx = a.px - cursorX; dy = a.py - cursorY;
+        dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < cursorLink) {
+          ctx.strokeStyle = 'rgba(177, 152, 255, ' + ((1 - dist / cursorLink) * 0.5) + ')';
+          ctx.beginPath();
+          ctx.moveTo(cursorX, cursorY);
+          ctx.lineTo(a.px, a.py);
+          ctx.stroke();
+        }
+      }
+
+      // dots with gentle twinkle (brighter and bigger near the cursor)
+      for (i = 0; i < dots.length; i++) {
+        a = dots[i];
+        alpha = a.depth * (0.36 + 0.24 * Math.sin(t * 0.0011 + a.phase));
+        var size = a.r;
+        dx = a.px - cursorX; dy = a.py - cursorY;
+        dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < cursorLink) {
+          var prox = 1 - dist / cursorLink;
+          alpha += prox * 0.6;
+          size += prox * 1.3 * DPR;
+        }
+        ctx.fillStyle = 'rgba(' + a.tint + ',' + Math.min(alpha, 1) + ')';
+        ctx.beginPath();
+        ctx.arc(a.px, a.py, size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // shooting stars
+      if (t > nextMeteor && !document.hidden) spawnMeteor(t);
+      ctx.lineCap = 'round';
+      for (i = meteors.length - 1; i >= 0; i--) {
+        var m = meteors[i];
+        m.life++;
+        m.x += m.vx;
+        m.y += m.vy;
+        if (m.life > m.max || m.x < -50 || m.x > W + 50 || m.y > H + 50) {
+          meteors.splice(i, 1);
+          continue;
+        }
+        // ease in/out over the meteor's lifetime
+        var p = m.life / m.max;
+        var fade = Math.sin(p * Math.PI);
+        var tailX = m.x - m.vx * 13, tailY = m.y - m.vy * 13;
+        var mg = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
+        mg.addColorStop(0, 'rgba(235, 238, 255, ' + (0.85 * fade) + ')');
+        mg.addColorStop(0.3, 'rgba(167, 139, 250, ' + (0.35 * fade) + ')');
+        mg.addColorStop(1, 'rgba(167, 139, 250, 0)');
+        ctx.strokeStyle = mg;
+        ctx.lineWidth = 1.6 * DPR;
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+        // bright head
+        ctx.fillStyle = 'rgba(255, 255, 255, ' + (0.9 * fade) + ')';
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, 1.4 * DPR, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       requestAnimationFrame(tick);
     }
 
     resize();
-    initStars();
-    window.addEventListener('resize', function () { resize(); initStars(); }, { passive: true });
+    initDots();
+    initOrbs();
+    window.addEventListener('resize', function () { resize(); initDots(); initOrbs(); }, { passive: true });
     if (!reducedMotion) requestAnimationFrame(tick);
 
     /* ── Nav border on scroll ── */
